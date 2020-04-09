@@ -13,14 +13,16 @@ $password = $_POST['password'] != "" ? $_POST['password'] :  $errorCount++;
 $gender = $_POST['gender'] != "" ? $_POST['gender'] :  $errorCount++;
 $designation = $_POST['designation'] != "" ? $_POST['designation'] :  $errorCount++;
 $department = $_POST['department'] != "" ? $_POST['department'] :  $errorCount++;
+$date = date("Y-m-d, h:i:sa");
 
 $_SESSION['first_name'] = $first_name;
 $_SESSION['last_name'] = $last_name;
 $_SESSION['email'] = $email;
+$_SESSION['password'] = $password;
 $_SESSION['gender'] = $gender;
 $_SESSION['designation'] = $designation;
 $_SESSION['department'] = $department;
-
+$_SESSION['reg_date'] = $date;
 
 if($errorCount > 0){
 
@@ -67,7 +69,36 @@ if($errorCount > 0){
     header("Location: login.php");
 }
 
-
+//Validating email entry
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo("$email is a valid email address");
+  } else {
+    $_SESSION["error"] = "Invalid Email address" ;
+      header("Location: register.php");
+  }
+  if (strlen($email) < 5){
+      $_SESSION["error"] = "email must have more than 5 characters";
+      header("Location: register.php");
+  }
+  
+  // validate first name 
+  if (!preg_match("/^[a-zA-Z ]*$/",$first_name)) {
+    $_SESSION["error"] = "For names Only letters and white space allowed" ;
+      header("Location: register.php");
+  }
+  if (strlen($first_name) < 3){
+      $_SESSION["error"] = "Firstname must have more than 2 characters";
+      header("Location: register.php");
+  }
+  
+  // validate last name
+  if (!preg_match("/^[a-zA-Z ]*$/",$last_name)) {
+    $_SESSION["error"] = "For names Only letters and white space allowed" ;
+    header("Location: register.php");}
+  if (strlen($last_name) < 3){
+      $_SESSION["error"] = "lastname must have more than 2 characters";
+      header("Location: register.php");}
+    ?>
 
 
 
