@@ -1,6 +1,15 @@
 <?php include_once('lib/header.php');
       require_once('functions/alert.php');
 
+      if(isset($_SESSION['loggedIn'])&& !empty($_SESSION['loggedIn'])){
+        if($_SESSION['role']=='Medical Team(MT)'){
+            header("Location: Med-Team.php");
+        }else{
+            header("Location:patient.php");}
+        
+    }
+ 
+
 if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
     // redirect to dashboard
     header("Location: dashboard.php");

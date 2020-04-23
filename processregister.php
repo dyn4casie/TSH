@@ -39,10 +39,14 @@ if($errorCount > 0){
 
 }else{
 
+date_default_timezone_get("Africa/Lagos");
+$dateData = date('d M Y h:i:s A');
+
      $newUserId = ($countAllUsers-1);
 
     $userObject = [
         'id'=>$newUserId,
+        'reg_date'=>$date,
         'first_name'=>$first_name,
         'last_name'=>$last_name,
         'email'=>$email,
@@ -55,7 +59,7 @@ if($errorCount > 0){
     //Check if the user already exists.
     $userExists = find_user($email);
 
-        if($userExists){
+        if($userExists == $email . ".json"){
             $_SESSION["error"] = "Registration Failed, User already exits ";
             header("Location: register.php");
             die();
@@ -109,7 +113,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 
 
-//initial code
+<!--//initial code
 
 /*$first_name = $_POST['first_name'];
 $last_name = $_POST['last_name'];
@@ -148,4 +152,4 @@ print_r($errorArray);*/
 
 //saving the data into the database
 
-//return back to the message with the status message
+//return back to the message with the status message-->

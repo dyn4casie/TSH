@@ -1,4 +1,6 @@
-<?php include_once('lib/header.php');  require_once('functions/alert.php'); ?>
+<?php include_once('lib/header.php');  
+require_once('functions/alert.php'); 
+?>
    
    <h3>Forgot Password</h3>
    <p>Provide the email address associated with your account</p>

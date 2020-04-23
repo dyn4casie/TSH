@@ -45,6 +45,9 @@ if($errorCount > 0){
                 $_SESSION['fullname'] = $userObject->first_name . " " . $userObject->last_name;
                 $_SESSION['role'] = $userObject->designation;
                 
+                // $_SESSION['first_name'] = $first_name;
+               $_SESSION['datereg'] = $userObject->datereg;
+               //    $lastlogin  = fetchdate($_SESSION['email']);
                 redirect_to("dashboard.php");
                 die();
             }

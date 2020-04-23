@@ -1,34 +1,42 @@
-<?php include_once('lib/header.php');
- require_once('functions/alert.php');
-if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
+<?php include_once('lib/header.php'); 
+require_once('functions/alert.php');
+
+if(!isset($_SESSION['loggedIn'])){
     // redirect to dashboard
-    header("Location: dashboard.php");
+    header("Location: login.php");
 }
-// include_once('lib/header.php');
-
 ?>
-<div class="container">
-    <div class="row col-6">
-        <h3>Register</h3>
-    </div>
-    <div class="row col-6">
-        <p><strong>Welcome, Please Register</strong></p>
-    </div>
-    <div class="row col-6">
-        <p>All Fields are required</p>
-    </div>
-    <div class="row col-6">
 
-        <form method="POST" action="processregister.php">
+<div style="text-align:center">
+<h3>Super Admin Board</h3>
+<p>Welcome, <span style="text-decoration:underline"><?php echo $_SESSION['fullname'] ?></span>, 
+You are logged in as <span style="text-decoration:underline"><?php echo $_SESSION['role'] ?></span>, 
+and your login time is <span style="text-decoration:underline"><?php echo $_SESSION['logInTime'] ?></span>.</p>
+<p>Your department is <span style="text-decoration:underline"><?php echo $_SESSION['department'] ?></span></p>
+<p>Your ID is <span style="text-decoration:underline"><?php echo $_SESSION['loggedIn'] ?></span></p>
+<p>Date of registration of account: <span style="text-decoration:underline"><?php echo $_SESSION['registered'] ?></span></p>
+<br>
+<br>
+<br>
+
+<hr>
+<h4>Add Other Members</h4>
+<p>Please fill this form to add other members</p>
+<div style="display:flex;flex-direction:column;flex-wrap:wrap;justify-content:center;text-align:left;align-items:center">
+<p>
+        <?php  print_alert(); 'q';?>
+        </p>
+<form method="POST" action="processregister.php" style="width: 300px;background-color:fff;padding:20px;">
         <p>
-            <?php  print_alert(); ?>
+            <input type="hidden" name="super_admin" value = "super_admin">
+            <input type="hidden" name="admin_email" value="<?php echo $_SESSION['email'] ?>" >
         </p>
             <p>
                 <label>First Name</label><br />
                 <input  
                 <?php              
                     if(isset($_SESSION['first_name'])){
-                        echo "value=" . $_SESSION['first_name'];                                                             
+                        echo "value=" . $_SESSION['first_name'];                                                          
                     }                
                 ?>
                 type="text" class="form-control" name="first_name" placeholder="First Name" />
@@ -49,8 +57,8 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
                 
                 <?php              
                     if(isset($_SESSION['email'])){
-                        echo "value=" . $_SESSION['email'];                                                             
-                    }                
+                        echo "value=" . $_SESSION['email'];
+                      }                                                                            
                 ?>
 
                 type="text" class="form-control" name="email" placeholder="Email"  />
@@ -68,7 +76,7 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
                         echo "value=" . $_SESSION['department'];                                                             
                     }                
                 ?>
-                    <option value="-1">Select One</option>
+                    <option value="">Select One</option>
                     <option 
                     <?php              
                         if(isset($_SESSION['gender']) && $_SESSION['gender'] == 'Female'){
@@ -90,7 +98,14 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
                 <label>Designation</label><br />
                 <select class="form-control" name="designation" >
                 
-                    <option value="-1">Select One</option>
+                    <option value="">Select One</option>
+                    <option 
+                    <?php              
+                        if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Super Admin (SA)'){
+                            echo "selected";                                                           
+                        }                
+                    ?>
+                    >Super Admin (SA)</option>
                     <option 
                     <?php              
                         if(isset($_SESSION['designation']) && $_SESSION['designation'] == 'Medical Team (MT)'){
@@ -109,34 +124,19 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
             </p>
             <p>
                 <label class="label" for="department">Department</label><br />
-                <select  required class="form-control" name="department" >
-                        <option value="">Select One</option>
-                        <option>Trauma</option>
-                        <option>Laboratory</option>
-                        <option>Pediatrics</option>
-                        <option>Obstetrics and Gynecology</option>
-                        <option>Surgical</option>
-                        <option>Accident & Emergency</option>
-                        <option>Geriatrics</option>
-                    </select>
+                <input
                 <?php              
                     if(isset($_SESSION['department'])){
-                        echo "value=" . $_SESSION['department'];                                                             
-                    }                
+                        echo "value=" . $_SESSION['department']; 
+                      }                                                                            
                 ?>
-                
+                type="text" id="department" class="form-control" name="department" placeholder="Department"  />
             
             </p>
             <p>
                 <button class="btn btn-sm btn-success" type="submit">Register</button>
             </p>
-            <p>
-                    <a href="forgot.php">Forgot Password</a><br />
-                    <a href="login.php">Already have an account? Login</a>
-            </p>
         </form>
-
-    </div>
-
+        </div>
 </div>
 <?php include_once('lib/footer.php'); ?>
