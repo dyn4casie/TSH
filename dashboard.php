@@ -34,5 +34,13 @@ and your ID is <?php echo $_SESSION['loggedIn'] ?> <br>
 You Registered on <?php echo $_SESSION['reg_date']?> <br>
 <hr>
 Your last login date was: <?php echo $prevlogindate?> at <?php echo $prevlogintime ?>
+<?php
+//Display options based on user role
+if($_SESSION['role']=='Medical Team(MT)'){?>
+    <a class="btn btn-lg btn-success" href="med_team.php" role="button">View Active Appointments</a> 
+<?php }elseif($_SESSION['role']=='Patients'){ ?>
+    <a class="btn btn-lg btn-success" href="appointment.php" role="button">Book an Appointment</a> |
+    <a class="btn btn-lg btn-success" href="bill.php" role="button" >Pay Bills</a></button>
+<?php }  ?>
 
 <?php include_once('lib/footer.php'); ?>

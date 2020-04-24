@@ -2,6 +2,7 @@
     require_once('functions/user.php');
     require_once('functions/alert.php');
     require_once('functions/redirect.php');
+    require_once('functions/email.php');
 //Collecting the data
 
 $errorCount = 0;
@@ -47,7 +48,7 @@ if($errorCount > 0){
 
                         $userObject->password = password_hash($password, PASSWORD_DEFAULT);
             
-                        unlink("db/users/".$currentUser); //file delete, user data delete
+                        unlink("db/user/".$currentUser); //file delete, user data delete
                         unlink("db/token/".$currentUser); //file delete, token data delete
 
                         save_user($userObject);
