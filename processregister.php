@@ -1,5 +1,8 @@
 <?php session_start();
     require_once('functions/user.php');
+    require_once('functions/alert.php');
+    require_once('functions/redirect.php');
+    require_once('functions/token.php');
 //Collecting the data
 
 $errorCount = 0;
@@ -40,13 +43,16 @@ if($errorCount > 0){
 }else{
 
 date_default_timezone_get("Africa/Lagos");
-$dateData = date('d M Y h:i:s A');
+$reg_date = date('d M Y h:i:s A');
 
-     $newUserId = ($countAllUsers-1);
+    $allUsers = scandir("db/users/"); // return @array (2 filled)
+    $countAllUsers = count($allUsers);
+
+    $newUserId = ($countAllUsers - 1);
 
     $userObject = [
         'id'=>$newUserId,
-        'reg_date'=>$date,
+        'reg_date'=>$reg_date,
         'first_name'=>$first_name,
         'last_name'=>$last_name,
         'email'=>$email,

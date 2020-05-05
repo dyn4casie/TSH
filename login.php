@@ -1,5 +1,6 @@
 <?php include_once('lib/header.php');
       require_once('functions/alert.php');
+      require_once('functions/user.php');
 
       if(isset($_SESSION['loggedIn'])&& !empty($_SESSION['loggedIn'])){
         if($_SESSION['role']=='Medical Team(MT)'){

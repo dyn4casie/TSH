@@ -67,7 +67,7 @@ if(!$name_matches[0]){
     //Check time of event
     $currentTimeinSecs = time();
     $registrationdate = date('Y-m-d', $currentTimeinSecs); 
-    $allUsers = scandir("db/user/");
+    $allUsers = scandir("db/users/");
 
 
     $countAllUsers = count($allUsers);
@@ -100,7 +100,7 @@ if(!$name_matches[0]){
     //saving the data into the db (folder)
     file_put_contents("db/user/".$email. ".json", json_encode($userObject));
     $_SESSION["message"] = "Addition Successful, User can now login ";
-    header("Location: admin_dashboard.php");
+    header("Location: admindashboard.php");
 }
 
 
