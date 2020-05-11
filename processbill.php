@@ -35,8 +35,8 @@ $amount = $amount;
 $currency = "NGN";
 $txref = $ref; // ensure you generate unique references per transaction.
 $PBFPubKey = "FLWPUBK_TEST-b2d7bd5930abf43b246502791a25d37b-X"; // get your public key from the dashboard.
-$redirect_url = "http://localhost/snh/verifybill.php";
-//$redirect_url = "http://localhost/snh/bill.php";
+$redirect_url = "http://localhost/TSH/verifybill.php";
+//$redirect_url = "http://localhost/TSH/bill.php";
 
 
 curl_setopt_array($curl, array(

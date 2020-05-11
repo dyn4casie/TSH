@@ -1,15 +1,15 @@
 <?php  include_once('lib/header.php'); 
    if(isset($_SESSION['loggedIn'])&& !empty($_SESSION['loggedIn'])){
     if($_SESSION['role']=='Medical Team(MT)'){
-        header("Location: med_team.php");
-    }elseif($_SESSION['role']=='Patients'){
+        header("Location: Med-Team.php");
+    }elseif($_SESSION['role']=='Patient'){
         header("Location: patient.php");}
 }
 ?>
 
 
 <h3>Admin Login</h3>
-<form action="processAdmin.php" method="post">
+<form action="processadmin.php" method="post">
         <p>
             <label for="username">Username</label>
             <input class = "form-control" type="email" name="username" placeholder= "Username" >

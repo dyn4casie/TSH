@@ -2,7 +2,7 @@
 
 function is_user_loggedIn(){
 
-    if($_SESSION['loggedIn'] && !empty($_SESSION['loggedIn'])) {
+    if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])) {
         return true;
     }
 
@@ -58,3 +58,14 @@ function find_user($email = ""){
 function save_user($userObject){
     file_put_contents("db/users/". $userObject['email'] . ".json", json_encode($userObject));
 }
+
+function save_user_reset($userObject){
+    file_put_contents("db/users/". $userObject->email . ".json", json_encode($userObject));
+}
+
+function save_log($email, $timingObject){
+    file_put_contents("db/logs/".$email. ".json",json_encode($timingObject));
+}
+
+
+?>

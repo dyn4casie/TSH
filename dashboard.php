@@ -19,8 +19,8 @@ $email = $_SESSION['email'];
 if($currentUser == $email. ".json"){
     $detailString = file_get_contents("db/logs/".$currentUser);
     $userObject = json_decode($detailString);
-    $lastlogindate = $userObject->date;
-    $lastlogintime = $userObject->time;
+   // $lastlogindate = $userObject->date;
+    //$lastlogintime = $userObject->time;
 }
 }
 ?>
@@ -34,15 +34,15 @@ You are logged in as (<?php echo $_SESSION['role'] ?>),in <?php echo $_SESSION['
 You were registered on <?php echo $_SESSION['reg_date'] ?>
 <br>
 <hr>
-You last logged in on <?php echo $lastlogindate?> at <?php echo $lastlogintime ?>
-
+<!--You last logged in on <?php echo $lastlogindate?> at <?php echo $lastlogintime ?>
+-->
 <br>
 <hr>
 <?php 
 //Display options based on user role
 if($_SESSION['role']=='Medical Team(MT)'){?>
     <a class="btn btn-lg btn-success" href="Med-Team.php" role="button">View Active Appointments</a> 
-<?php }elseif($_SESSION['role']=='Patients'){ ?>
+<?php }elseif($_SESSION['role']=='Patient'){ ?>
     <a class="btn btn-lg btn-success" href="appointment.php" role="button">Book an Appointment</a> |
     <a class="btn btn-lg btn-success" href="bill.php" role="button" >Pay Bills</a></button>
 <?php }  ?>

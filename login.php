@@ -2,14 +2,14 @@
       require_once('functions/alert.php');
       require_once('functions/user.php');
 
-      if(isset($_SESSION['loggedIn'])&& !empty($_SESSION['loggedIn'])){
+      if(is_user_loggedIn()){
         if($_SESSION['role']=='Medical Team(MT)'){
             header("Location: Med-Team.php");
         }else{
             header("Location:patient.php");}
         
     }
- 
+
 
 if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
     // redirect to dashboard

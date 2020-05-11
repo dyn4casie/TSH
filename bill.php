@@ -6,7 +6,7 @@ if(!isset($_SESSION['loggedIn'])){
 }
 
 require_once('functions/alert.php');
-require_once('functions/users.php');
+require_once('functions/user.php');
 require_once('functions/email.php');
 require_once('functions/redirect.php');
 require_once('functions/token.php');
@@ -23,12 +23,13 @@ require_once('functions/token.php');
                     <label for="department">Department</label >
                     <select  required class="form-control" name="department" >
                         <option value="">Select One</option>
-                        <option>General Health</option>
+                        <option>Trauma</option>
                         <option>Laboratory</option>
-                        <option>Paediatrics</option>
-                        <option>Obsteatrics and Gyneacology</option>
-                        <option>Urology</option>
-                        <option>Surgery</option>
+                        <option>Pediatrics</option>
+                        <option>Obstetrics and Gynecology</option>
+                        <option>Surgical</option>
+                        <option>Accident & Emergency</option>
+                        <option>Geriatrics</option>
                     </select>
                 </p>
                 <p>

@@ -1,8 +1,9 @@
 <?php 
-include_once('lib/header.php') ;
+    include_once('lib/header.php') ;
+    require_once('functions/user.php');
 ?>
 <?php if(!is_user_loggedIn() && $_SESSION['role']!=="Patients"){
-    set_alert("error","You are not authorized to view that page.");
+    set_alert("error","You are'nt authorized to view that page.");
     redirect_to("login.php");
 
 } ?>
@@ -12,6 +13,7 @@ include_once('lib/header.php') ;
         <div class = "row col-6"><strong> Book an Appointment</strong></div>
         </div>
         <div class= "row col-6 ">
+        <div class="jumbotron text-center">
             <form action="processappointment.php" method="post">
                 <?php print_alert();?>
                 <p>
@@ -31,9 +33,9 @@ include_once('lib/header.php') ;
                     <textarea  class="form-control" name="complaint"  placeholder= "Initial Complaint" rows="3" required ></textarea>
                 </p>
                 <p>
-                <label class="label" for="department">Department</label><br />
-                <select  required class="form-control" name="department" >
-                        <option value="">Select One</option>
+                    <label for="department">Department</label >
+                    <select  required class="form-control" name="department" >
+                    <option value="">Select One</option>
                         <option>Trauma</option>
                         <option>Laboratory</option>
                         <option>Pediatrics</option>
@@ -47,6 +49,6 @@ include_once('lib/header.php') ;
                 <button class="btn btn-success" type="submit">Submit request</button>
                 </p>
             </form>
-                            
+               </div>             
         </div>
 </div>

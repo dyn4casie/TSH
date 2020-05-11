@@ -3,10 +3,15 @@
 require_once('alert.php');
 require_once('redirect.php');
 
+if(!isset($_SESSION['loggedIn'])){
+    header("Location: login.php");
+}
+
 function send_mail(
     $subject = "", 
     $message = "",
-    $email = ""
+    $email = "",
+    $type = ""
     ){
     
     $headers = "From: no-reply@snh.org" . "\r\n" .

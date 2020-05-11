@@ -68,7 +68,7 @@ if(isset($_SESSION['loggedIn']) && !empty($_SESSION['loggedIn'])){
                         echo "value=" . $_SESSION['department'];                                                             
                     }                
                 ?>
-                    <option value="-1">Select One</option>
+                    <option value="">Select One</option>
                     <option 
                     <?php              
                         if(isset($_SESSION['gender']) && $_SESSION['gender'] == 'Female'){

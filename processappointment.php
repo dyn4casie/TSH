@@ -34,7 +34,7 @@ $_SESSION['department']= $department;
 $allApps = scandir("db/appointment/"); // return @array (2 filled)
 $countAllApps = count($allApps);
 
-print_r($nat_app);
+//print_r($nat_app);
 $newAppId = ($countAllApps - 1);
 
     $appObject = [
@@ -46,6 +46,8 @@ $newAppId = ($countAllApps - 1);
     'nat_app'=>$nat_app,
     'complaint'=>$complaint,
     'department'=>$department,
+    'paid'=>'',
+    'amount'=>'',
     ];
 
     $new = json_encode($appObject);

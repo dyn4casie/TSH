@@ -34,7 +34,8 @@ if($errorCount > 0){
 
         if($currentUser){
           //check the user password.
-            $userString = file_get_contents("db/users/".$currentUser->email . ".json");
+            $currentUserEmail = $currentUser->email;
+            $userString = file_get_contents("db/users/".$currentUserEmail . ".json");
             $userObject = json_decode($userString);
             $passwordFromDB = $userObject->password;
 
@@ -60,11 +61,12 @@ if($errorCount > 0){
                 $_SESSION['role'] = $userObject->designation;
                 $_SESSION['department']=$userObject->department;
                 $_SESSION['reg_date']=$userObject->reg_date;
+                
                 //Login based on designation/Access Level
                 if($_SESSION['role']=='Medical Team(MT)') {
                     save_log($currentUserEmail,$timingObject);
                     redirect_to("Med-Team.php");
-                }elseif($_SESSION['role']=='Patients'){
+                }elseif($_SESSION['role']=='Patient'){
                     save_log($currentUserEmail,$timingObject);
                     redirect_to("patient.php");  
                 }
@@ -79,3 +81,5 @@ if($errorCount > 0){
     die();
 
 }
+
+?>
